@@ -135,6 +135,17 @@ function partListManager() {
 function carPartListManager() {
     // Select item to use on car manufacturing
     toggleActive(this)
+    clearActiveExcept(this)
+
+    
+    if (this.classList.contains("active")) {
+        //Add info to list_name-details
+        document.getElementById("part-list-details").style.display = "block"
+        populateDetails(this.textContent)
+    } else {
+        document.getElementById("part-list-details").style.display = "none"
+        clearDetails()
+    }
 }
 
 function carListManager() {

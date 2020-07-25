@@ -1,0 +1,60 @@
+sudo npm install -g ganache-cli truffle
+npm install http-server -g
+ganache-cli
+(or use ganache-cli -m mneonic (if mnemonic already registered))
+copy the mnemonic
+add wallet (import in metamask)
+truffle migrate --reset (inside ethereum folder)
+change co pm inside utils.js
+in web run http-server
+localhost:8080
+
+
+// latest
+
+Ganache CLI v6.9.1 (ganache-core: 2.10.2)
+
+Available Accounts
+==================
+(0) 0x2c800fe7292d2680D00865F1fC4A9E253166d59E (100 ETH)
+(1) 0x0b8c5C7bE54C0A0F5E0F52DAC1b0c4aA65eDA65C (100 ETH)
+(2) 0xeF4e26F25bDdD5f53D66fAF39F539eFFE0Ffa25D (100 ETH)
+(3) 0x08f70b2A4eCC33D4044dae4Be26A4D9097b22699 (100 ETH)
+(4) 0xC5Fe6d6B42131ed73A5c8157515e12A27489c91a (100 ETH)
+(5) 0x0e25a64e9427Cb9DB0B533063546Eb0B3a5C1EF8 (100 ETH)
+(6) 0x54876AE5F0Dbb81D6269a4056cBA818A6ecd4740 (100 ETH)
+(7) 0x5E84B8D507B268400eb08fAD17a5f59a3ceC1c5e (100 ETH)
+(8) 0x18923dBeAB6463c4846208F4665B595e86DBc112 (100 ETH)
+(9) 0xf7A91Eb6Af398E192A3e7ee4275A135Df9A0DfdC (100 ETH)
+
+Private Keys
+==================
+(0) 0xfb79a7b9d17f6493de8e4e6e6cf46afe25e19616bc093e8cc1fcf25411a501c6
+(1) 0x47c08db40819645634fc91b4ea4730642bdb75d5966229cea3995f1810b6eb37
+(2) 0xf2e893decc7bb48ea34c144c3946a1ecf49e5418e3435fb2d9e58715a59b58eb
+(3) 0xed5de7542e10a63109b7d4b4d7f80bcbd144a6d092c60ae2e51f9758f548a5dc
+(4) 0x76d4ce70d0dcde20d770375bad35cb923fef0dc524ce3f522f036eebd9f7b7a2
+(5) 0x0c73d9c863a483c8f135e328f83896643a94717832c0ac8edc724779804c0f46
+(6) 0xd595e13951bccefb6a5bb4d0757173d49fe91a5e21ac2f37b26e6acb26e04e81
+(7) 0x957b3aacd72074f742ff1aaff30b7dc024f1702644dfbfb1033c3b54bc227796
+(8) 0x121f1e633106376bef33596af58f6101d918026ce17a3dbb8d784c8327df97e4
+(9) 0x5e2664eb26d0f1893d81155408d14b207299f63dc9890108b118c86e4557bef9
+
+HD Wallet
+==================
+Mnemonic:      inside father husband punch pill dash clump indoor hazard despair jeans crawl
+Base HD Path:  m/44'/60'/0'/0/{account_index}
+
+Gas Price
+==================
+20000000000
+
+Gas Limit
+==================
+6721975
+
+Call Gas Limit
+==================
+9007199254740991
+
+Listening on 127.0.0.1:8545

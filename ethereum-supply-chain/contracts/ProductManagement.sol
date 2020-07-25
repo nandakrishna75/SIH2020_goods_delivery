@@ -84,10 +84,4 @@ contract ProductManagement {
         require(products[product_hash].manufacturer != address(0), "Product inexistent");
         return products[product_hash].parts;
     }
-
-    // function delPart(bytes32 part_hash) public returns (){
-    //     //The automatic getter does not return arrays, so lets create a function for that
-    //     require(parts[part_hash].manufacturer != address(0), "Part inexistent");
-    //     delete parts[part_hash];
-    // }
 }

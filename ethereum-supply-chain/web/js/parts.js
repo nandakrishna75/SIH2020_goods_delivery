@@ -1,5 +1,7 @@
 import { clearDetails, partListManager, carPartListManager, addItemToList, format_date, getActivePart, init_web3,getOwnedItemsFromEvent,getOwnerHistoryFromEvents, addPartOwnership } from "./utils.js"
 
+
+
 window.onload = async function () {
 
     var x = await init_web3()
@@ -25,7 +27,7 @@ window.onload = async function () {
             }
         }
         if(f==0)
-            addItemToList(parts[i], "part-list", carPartListManager)
+            addItemToList(parts[i], "part-list", partListManager)
     }
 
     document.getElementById("build-part").addEventListener("click", function () {

@@ -4,13 +4,13 @@ window.onload = async function () {
 
     var x = await init_web3()
     //First, get all the parts and products that belong to this dealer
-    // getOwnedItemsFromEvent(window.accounts[0], 'TransferPartOwnership').then((parts) => {
-    //     console.log("part Events")
-    //     console.log(parts)
-    //     for (var i = 0; i < parts.length; i++) {
-    //         addItemToList(parts[i], "parts-history", dealerPartListManager)
-    //     }
-    // })
+    getOwnedItemsFromEvent(window.accounts[0], 'TransferPartOwnership').then((parts) => {
+        console.log("part Events")
+        console.log(parts)
+        for (var i = 0; i < parts.length; i++) {
+            addItemToList(parts[i], "parts-history", dealerPartListManager)
+        }
+    })
 
     //Then, get products
     getOwnedItemsFromEvent(window.accounts[0], 'TransferProductOwnership').then((products) => {
