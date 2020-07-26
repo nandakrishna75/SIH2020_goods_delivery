@@ -1,4 +1,4 @@
-import { clearDetails, partListManager, carPartListManager, addItemToList, format_date, getActivePart, init_web3,getOwnedItemsFromEvent,getOwnerHistoryFromEvents, addPartOwnership } from "./utils.js"
+import { generateQRCode, clearDetails, partListManager, carPartListManager, addItemToList, format_date, getActivePart, init_web3,getOwnedItemsFromEvent,getOwnerHistoryFromEvents, addPartOwnership } from "./utils.js"
 
 
 
@@ -54,6 +54,7 @@ window.onload = async function () {
         //Add part hash to part-list for querying
         addItemToList(part_sha, "part-list", partListManager)
         addPartOwnership(part_sha)
+        
     })
 
     document.getElementById("part-change-ownership-btn").addEventListener("click", function () {

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.33/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script type="module" src="./js/parts.js"></script>
 </head>
 
@@ -49,6 +50,11 @@
         </div>
         <div class="row">
             <div class="col s12">
+                <div id="qr">
+                    <canvas id='qr-code'></canvas>
+                    <br>
+                </div>
+
                 <div id="part-list-details">
                     <label>Seller Address:</label>
                     <p id="details-address"></p>
@@ -58,8 +64,8 @@
                     <p id="details-part-type"></p>
                     <label>Creation Date:</label>
                     <p id="details-creation-date"></p>
-                    <input id="part-change-ownership-input" type="text" placeholder="Insert address">
-                    <button id="part-change-ownership-btn" class="waves-effect waves-light btn">Transfer to shippers</button>
+                    <!--<input id="part-change-ownership-input" type="text" placeholder="Insert address">
+                    <button id="part-change-ownership-btn" class="waves-effect waves-light btn">Transfer to shippers</button>-->
                 </div>
             </div>
         </div>

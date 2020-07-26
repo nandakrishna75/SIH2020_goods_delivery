@@ -17,6 +17,28 @@ function clearActiveExcept(element) {
     }
 }
 
+function generateQRCode(qr_text){
+    var div_qr=document.getElementById("qr"); 
+    var qr = document.getElementById("qr-code");                            
+                
+    var qr_new = new QRious({
+            element: qr,
+            size: 200,
+            value: qr_text
+        });
+    
+    var link = document.createElement('a');
+    var linkText = document.createTextNode("DOWNLOAD QR CODE");
+    link.appendChild(linkText);
+    link.download = 'filename.png';
+    link.href = qr_new.toDataURL()
+    link.value="download";
+    div_qr.appendChild(link);
+    //link.click();
+    
+    //setTimeout(function(){ myWindow.close() }, 5000);
+}
+
 function populateDetails(item) {
     console.log("Populate details, get info from chain")
     console.log(item)
@@ -25,6 +47,7 @@ function populateDetails(item) {
         if (error)
             console.log(error)
         else {
+            generateQRCode(item)
             console.log("Part info")
             console.log(part_info)
             document.getElementById("details-address").textContent = part_info["manufacturer"]
@@ -384,7 +407,7 @@ async function init_web3() {
         // }
     ])
 
-    window.pm.options.address = '0xE33cC4bF317805CDDA2112d4dfB3B7507955C4e0'
+    window.pm.options.address = '0x0ACb48d68e9497381c5A88f838b2e98FFE6cb621'
 
     window.co = new web3.eth.Contract([
         {
@@ -528,7 +551,7 @@ async function init_web3() {
             "signature": "0xac814490"
         }
     ])
-    window.co.options.address = "0x9027b1029e4d388c0500398840088406Cd69A27D"
+    window.co.options.address = "0x73E0c44FBA40C3C63d446dE69d9aa7cdcA220ADe"
 }
 
 async function getOwnerHistoryFromEvents(event, p_hash) {
@@ -599,5 +622,5 @@ export {
     toggleActive, clearActiveExcept, populateDetails, populateCarDetails, clearDetails,
     clearCarDetails, partListManager, carPartListManager, carListManager, addItemToList,
     format_date, getActivePart, init_web3, getMultipleActivePart, getOwnerHistoryFromEvents, getOwnedItemsFromEvent,
-    dealerPartListManager, dealerProductListManager, addPartOwnership
+    dealerPartListManager, dealerProductListManager, addPartOwnership,generateQRCode
 };
