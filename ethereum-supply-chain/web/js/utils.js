@@ -58,6 +58,43 @@ function populateDetails(item) {
     })
 }
 
+function carPopulateDetails(item) {
+    console.log("Populate details, get info from chain")
+    console.log(item)
+    //Query blockchain for data to fill element
+    window.pm.methods.parts(item).call({ from: window.accounts[0] }, function (error, part_info) {
+        if (error)
+            console.log(error)
+        else {
+            console.log("Part info")
+            console.log(part_info)
+            document.getElementById("details-address").textContent = part_info["manufacturer"]
+            document.getElementById("details-serial-num").textContent = part_info["serial_number"]
+            document.getElementById("details-part-type").textContent = part_info["part_type"]
+            document.getElementById("details-creation-date").textContent = part_info["creation_date"]
+        }
+    })
+}
+
+function carPopulateDetails1(item) {
+    console.log("Populate details, get info from chain")
+    console.log(item)
+    //Query blockchain for data to fill element
+    window.pm.methods.parts(item).call({ from: window.accounts[0] }, function (error, part_info) {
+        if (error)
+            console.log(error)
+        else {
+            console.log("Part info")
+            console.log(part_info)
+            document.getElementById("details-address-1").textContent = part_info["manufacturer"]
+            document.getElementById("details-serial-num-1").textContent = part_info["serial_number"]
+            document.getElementById("details-part-type-1").textContent = part_info["part_type"]
+            document.getElementById("details-creation-date-1").textContent = part_info["creation_date"]
+            document.getElementById("part-change-ownership-btn").setAttribute("name",item);
+        }
+    })
+}
+
 function addPartOwnership(item) {
     //Check if the part is already registered, and do it otherwise
     console.log("here")
@@ -137,10 +174,11 @@ function clearDetails() {
 }
 
 function clearCarDetails() {
-    document.getElementById("car-details-address").textContent = ""
-    document.getElementById("car-details-serial-num").textContent = ""
-    document.getElementById("car-details-parts").textContent = ""
-    document.getElementById("car-details-creation-date").textContent = ""
+    document.getElementById("details-address-1").textContent = ""
+    document.getElementById("details-serial-num-1").textContent = ""
+    document.getElementById("details-part-type-1").textContent = ""
+    document.getElementById("details-creation-date-1").textContent = ""
+    document.getElementById("part-change-ownership-input").value = ""
 }
 
 function partListManager() {
@@ -159,16 +197,21 @@ function carPartListManager() {
     // Select item to use on car manufacturing
     toggleActive(this)
     clearActiveExcept(this)
-
+    console.log("hello there")
     
     if (this.classList.contains("active")) {
         //Add info to list_name-details
         document.getElementById("part-list-details").style.display = "block"
-        populateDetails(this.textContent)
+        carPopulateDetails(this.textContent)
     } else {
         document.getElementById("part-list-details").style.display = "none"
         clearDetails()
     }
+}
+
+function scan_qr(msg){
+    document.getElementById("part-list-details-1").style.display = "block"
+    carPopulateDetails1(msg);
 }
 
 function carListManager() {
@@ -407,7 +450,7 @@ async function init_web3() {
         // }
     ])
 
-    window.pm.options.address = '0x0ACb48d68e9497381c5A88f838b2e98FFE6cb621'
+    window.pm.options.address = '0xeA90f69Cd045E8efC12c5661b5e4C1A38C8990a7'
 
     window.co = new web3.eth.Contract([
         {
@@ -551,7 +594,7 @@ async function init_web3() {
             "signature": "0xac814490"
         }
     ])
-    window.co.options.address = "0x73E0c44FBA40C3C63d446dE69d9aa7cdcA220ADe"
+    window.co.options.address = "0xD39613a88E7613a5Ac5A440CD59911fC95e35d67"
 }
 
 async function getOwnerHistoryFromEvents(event, p_hash) {
@@ -622,5 +665,5 @@ export {
     toggleActive, clearActiveExcept, populateDetails, populateCarDetails, clearDetails,
     clearCarDetails, partListManager, carPartListManager, carListManager, addItemToList,
     format_date, getActivePart, init_web3, getMultipleActivePart, getOwnerHistoryFromEvents, getOwnedItemsFromEvent,
-    dealerPartListManager, dealerProductListManager, addPartOwnership,generateQRCode
+    dealerPartListManager, dealerProductListManager, addPartOwnership,generateQRCode, scan_qr
 };

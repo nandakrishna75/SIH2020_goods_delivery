@@ -20,23 +20,26 @@ window.onload = async function () {
         if (owners[owners.length -1] == window.accounts[0])
             addItemToList(parts[i], "part-list", carPartListManager)
     }
-
+    
     document.getElementById("part-change-ownership-btn").addEventListener("click", function () {
         console.log("Change Ownership")
         //Get part data from active item on owned list
 
-        var hash_element = getActivePart("part-list")
+        var hash_element = document.getElementById("part-change-ownership-btn").getAttribute("name");
+        console.log(hash_element);
         if (hash_element != undefined) {
             var to_address = document.getElementById("part-change-ownership-input").value
             if (to_address != "") {
-                window.co.methods.changeOwnership(0, hash_element.textContent, to_address).send({ from: window.accounts[0], gas: 100000 }, function (error, result) {
+                window.co.methods.changeOwnership(0, hash_element, to_address).send({ from: window.accounts[0], gas: 100000 }, function (error, result) {
                     if (error) {
                         console.log(error)
                     } else {
                         console.log("Changed ownership")
                         //Logic to remove item from owned list
-                        hash_element.parentElement.removeChild(hash_element)
-                        clearDetails(document.getElementById("part-list-details"))
+                        // hash_element.parentElement.removeChild(hash_element)
+                        clearCarDetails(document.getElementById("part-list-details-1"))
+                        document.getElementById("part-list-details-1").style.display = "none"
+                        document.getElementById("transfer-result-div").innerHTML="Product Transferred"
                     }
                 })
             }

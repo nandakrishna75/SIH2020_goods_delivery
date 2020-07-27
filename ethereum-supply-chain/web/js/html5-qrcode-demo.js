@@ -1,3 +1,5 @@
+import { scan_qr } from "./utils.js"
+
 function docReady(fn) {
     // see if DOM is already available
     if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -15,7 +17,9 @@ docReady(function() {
         if (qrCodeMessage !== lastResult) {
             ++countResults;
             lastResult = qrCodeMessage;
-            resultContainer.innerHTML += `<div>[${countResults}] - ${qrCodeMessage}</div>`;
+            console.log(qrCodeMessage);
+            setInterval(scan_qr(qrCodeMessage),1);
+            // resultContainer.innerHTML += `<div>[${countResults}] - ${qrCodeMessage}</div>`;
         }
     }
 

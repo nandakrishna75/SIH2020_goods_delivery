@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col s12">
                 <div id="part-list-details">
-                    <label>Seller Address:</label>
+                    <label>Manufacturer Address:</label>
                     <p id="details-address"></p>
                     <label>Serial Number:</label>
                     <p id="details-serial-num"></p>
@@ -79,17 +79,39 @@
                     <p id="details-part-type"></p>
                     <label>Creation Date:</label>
                     <p id="details-creation-date"></p>
-                    <input id="part-change-ownership-input" type="text" placeholder="Insert address">
-                    <button id="part-change-ownership-btn" class="waves-effect waves-light btn">Transfer to shippers</button>
                 </div>
             </div>
         </div>
 
         <!-- Scanning part of the code -->
-        <div id="qr-reader" style="width:500px"></div>
-        <div id="qr-reader-results"></div>
-
-        <script src="./js/html5-qrcode.min.js"></script>
-        <script src="./js/html5-qrcode-demo.js"></script>
+        <div class="row">
+            <div id="part-list" class="collection with-header">
+                <p class="collection-header" style="display:none">Transfer Item</p>
+                <p class="collection-item">Transfer Item</p>
+            </div>
+        </div>
+        <div>
+            <div id="qr-reader" style="width:500px"></div>
+            <div id="qr-reader-results"></div>
+            <script src="./js/html5-qrcode.min.js"></script>
+            <script type="module" src="./js/html5-qrcode-demo.js"></script>
+        </div><br><br>
+        <div class="row">
+            <div class="col s12">
+                <div id="part-list-details-1" style="display:none">
+                    <label>Manufacturer Address:</label>
+                    <p id="details-address-1"></p>
+                    <label>Serial Number:</label>
+                    <p id="details-serial-num-1"></p>
+                    <label>Part Type:</label>
+                    <p id="details-part-type-1"></p>
+                    <label>Creation Date:</label>
+                    <p id="details-creation-date-1"></p>
+                    <input id="part-change-ownership-input" type="text" placeholder="Insert address">
+                    <button id="part-change-ownership-btn" class="waves-effect waves-light btn">Transfer to shippers</button>
+                </div>
+            </div>
+        </div>
+        <p id="transfer-result-div"></p>
     </div>
 </body>
