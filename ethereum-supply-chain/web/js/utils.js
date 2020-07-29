@@ -17,8 +17,8 @@ function clearActiveExcept(element) {
     }
 }
 
-function generateQRCode(qr_text){
-    var div_qr=document.getElementById("qr"); 
+function generateQRCode(qr_text) {
+    var div_qr = document.getElementById("qr"); 
     var qr = document.getElementById("qr-code");                            
                 
     var qr_new = new QRious({
@@ -97,7 +97,7 @@ function carPopulateDetails1(item) {
 
 function addPartOwnership(item) {
     //Check if the part is already registered, and do it otherwise
-    console.log("here")
+    console.log("here" + "addpartownership")
     window.co.methods.currentPartOwner(item).call({ from: window.accounts[0] }, function (error, result) {
         if (error) {
             console.log(error)
@@ -188,8 +188,12 @@ function partListManager() {
     if (this.classList.contains("active")) {
         //Add info to list_name-details
         populateDetails(this.textContent)
+        document.getElementById("qr").style.display = "block"
+        document.getElementById("part-list-details").style.display = "block"
     } else {
         clearDetails()
+        document.getElementById("qr").style.display = "none"
+        document.getElementById("part-list-details").style.display = "none"
     }
 }
 
@@ -450,7 +454,7 @@ async function init_web3() {
         // }
     ])
 
-    window.pm.options.address = '0xeA90f69Cd045E8efC12c5661b5e4C1A38C8990a7'
+    window.pm.options.address = '0xE33cC4bF317805CDDA2112d4dfB3B7507955C4e0'
 
     window.co = new web3.eth.Contract([
         {
@@ -594,7 +598,7 @@ async function init_web3() {
             "signature": "0xac814490"
         }
     ])
-    window.co.options.address = "0xD39613a88E7613a5Ac5A440CD59911fC95e35d67"
+    window.co.options.address = "0x9027b1029e4d388c0500398840088406Cd69A27D"
 }
 
 async function getOwnerHistoryFromEvents(event, p_hash) {

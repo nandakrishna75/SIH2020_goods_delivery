@@ -6,6 +6,9 @@ window.onload = async function () {
 
     var x = await init_web3()
 
+    document.getElementById("qr").style.display = "none"
+    document.getElementById("part-list-details").style.display = "none"
+
     var parts = await getOwnedItemsFromEvent(window.accounts[0], 'TransferPartOwnership')
     console.log(parts)
     console.log("parts listed")
@@ -13,20 +16,8 @@ window.onload = async function () {
         var owners = await getOwnerHistoryFromEvents('TransferPartOwnership', parts[i])
         console.log("owner here")
         console.log(owners)
-        var products = await getOwnedItemsFromEvent(window.accounts[0], 'TransferProductOwnership')
-        console.log(products)
-        var f=0;
         console.log(owners.length)
-        for (var j = 0; j < products.length; j++) {
-            if (owners[owners.length - 1] == window.accounts[0] ) {
-                var x=await window.pm.methods.getParts(products[j]).call({ from: window.accounts[0], gas: 2000000 })
-                console.log("x here " + i + " " + j)
-                console.log(x)
-                if(x[0]==parts[i])
-                    f=1;
-            }
-        }
-        if(f==0)
+        if (owners[owners.length -1] == window.accounts[0])
             addItemToList(parts[i], "part-list", partListManager)
     }
 
